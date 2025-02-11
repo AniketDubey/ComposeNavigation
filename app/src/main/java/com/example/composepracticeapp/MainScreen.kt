@@ -14,8 +14,8 @@ fun MainScreen(mainAppNavigation: NavHostController) {
     val insideMainScreenNav = rememberNavController()
 
     val bottomNavigationItems = listOf(
-        BottomNavigationScreens.Lock,
         BottomNavigationScreens.Person,
+        BottomNavigationScreens.Lock,
         BottomNavigationScreens.Home
     )
     Scaffold(

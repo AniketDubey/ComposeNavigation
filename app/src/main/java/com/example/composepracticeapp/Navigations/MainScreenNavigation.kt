@@ -14,7 +14,7 @@ fun MainScreenNavigationConfigurations(
     navController: NavHostController,
     mainAppNavigation: NavHostController
 ) {
-    NavHost(navController, startDestination = BottomNavigationScreens.Lock.route) {
+    NavHost(navController, startDestination = BottomNavigationScreens.Person.route) {
         composable(BottomNavigationScreens.Lock.route) {
             LockScreen(mainAppNavigation)
         }
