@@ -5,7 +5,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.composepracticeapp.InsideLock.InsideLockScreenFirstScreen
+import com.example.composepracticeapp.InsideLock.InsideLockScreenFourthScreen
 import com.example.composepracticeapp.InsideLock.InsideLockScreenSecondScreen
+import com.example.composepracticeapp.InsideLock.InsideLockScreenThirdScreen
 
 @Composable
 fun InsideLockScreenNavigation(
@@ -18,6 +20,12 @@ fun InsideLockScreenNavigation(
         }
         composable("InsideLockScreenSecondScreen") {
             InsideLockScreenSecondScreen(insideLockScreenNav)
+        }
+        composable("InsideLockScreenThirdScreen") {
+            InsideLockScreenThirdScreen(insideLockScreenNav)
+        }
+        composable("InsideLockScreenFourthScreen") {
+            InsideLockScreenFourthScreen(insideLockScreenNav)
         }
     }
 }

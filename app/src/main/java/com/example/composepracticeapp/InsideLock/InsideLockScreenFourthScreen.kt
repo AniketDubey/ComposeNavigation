@@ -9,10 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 
 @Composable
-fun InsideLockScreenSecondScreen(insideLockScreenNav: NavHostController) {
+fun InsideLockScreenFourthScreen(insideLockScreenNav: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
-        Button(onClick = { insideLockScreenNav.navigate("InsideLockScreenThirdScreen") }) {
-            Text(text = "InsideLockScreenSecondScreen")
+        Button(onClick = {
+            insideLockScreenNav.popBackStack("InsideLockScreenFirstScreen", true)
+        }
+        ) {
+            Text(text = "InsideLockScreenFourthScreen")
         }
     }
 }
