@@ -11,10 +11,10 @@ import com.example.composepracticeapp.NavigationScreen.PersonScreen
 
 @Composable
 fun MainScreenNavigationConfigurations(
-    navController: NavHostController,
+    insideMainScreenNav: NavHostController,
     mainAppNavigation: NavHostController
 ) {
-    NavHost(navController, startDestination = BottomNavigationScreens.Person.route) {
+    NavHost(insideMainScreenNav, startDestination = BottomNavigationScreens.Person.route) {
         composable(BottomNavigationScreens.Lock.route) {
             LockScreen(mainAppNavigation)
         }

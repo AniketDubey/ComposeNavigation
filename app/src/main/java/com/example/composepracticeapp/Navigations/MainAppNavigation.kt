@@ -20,7 +20,7 @@ fun MainAppNavigation(
         composable("MainScreen") {
             MainScreen(mainAppNavigation)
         }
-        composable("InsideLockScreen") {
+        composable("InsideLockScreenLandingPage") {
             InsideLockScreenLandingPage()
         }
     }
