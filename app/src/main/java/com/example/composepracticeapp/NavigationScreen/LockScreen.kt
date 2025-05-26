@@ -14,7 +14,7 @@ fun LockScreen(mainAppNavigation: NavHostController) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Button(onClick =
         {
-            mainAppNavigation.navigate("InsideLockScreenLandingPage")
+            mainAppNavigation.navigate("InsideLockScreen")
         }
         ) {
             Text(text = "LockScreen")

@@ -10,7 +10,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 
 @Composable
-fun AppBottomNavigation(
+fun SpookyAppBottomNavigation(
     insideMainAppNavigation: NavHostController,
     items: List<BottomNavigationScreens>
 ) {
