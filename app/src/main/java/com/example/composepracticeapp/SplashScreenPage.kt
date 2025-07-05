@@ -12,7 +12,7 @@ import androidx.navigation.NavHostController
 fun SplashScreenPage(mainAppNavigation: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Button(onClick = {
-            mainAppNavigation.navigate("MainScreen")
+            mainAppNavigation.navigate("Screen1")
         }) {
             Text(text = "SplashScreenPage")
         }
