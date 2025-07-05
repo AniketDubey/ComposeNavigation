@@ -9,9 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 
 @Composable
-fun SplashScreenPage(mainAppNavigation: NavHostController) {
+fun SplashScreenPage(
+    mainAppNavigation: NavHostController,
+    updateEventDetail: (EventDetail) -> Unit
+) {
     Box(modifier = Modifier.fillMaxSize()) {
         Button(onClick = {
+            updateEventDetail(EventDetail("100", "Updated Event Data"))
             mainAppNavigation.navigate("Screen1")
         }) {
             Text(text = "SplashScreenPage")

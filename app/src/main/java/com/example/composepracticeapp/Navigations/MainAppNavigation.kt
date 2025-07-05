@@ -6,7 +6,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -15,7 +18,9 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.composepracticeapp.EventDetail
 import com.example.composepracticeapp.InsideLock.InsideLockScreenLandingPage
+import com.example.composepracticeapp.LocalEventDetailProvider
 import com.example.composepracticeapp.MainScreen
 import com.example.composepracticeapp.SplashScreenPage
 
@@ -23,29 +28,34 @@ import com.example.composepracticeapp.SplashScreenPage
 fun MainAppNavigation(
     mainAppNavigation: NavHostController
 ) {
-    NavHost(mainAppNavigation, startDestination = "SplashScreen") {
+    val eventDetailsState = remember { mutableStateOf(EventDetail()) }
+    CompositionLocalProvider(LocalEventDetailProvider provides eventDetailsState) {
+        NavHost(mainAppNavigation, startDestination = "SplashScreen") {
 
-        composable("SplashScreen") {
-            SplashScreenPage(mainAppNavigation)
-        }
-        composable("MainScreen") {
-            MainScreen(mainAppNavigation)
-        }
-        composable("Screen1") {
-            Screen1(mainAppNavigation)
-        }
-        composable("Screen2") {
-            Screen2(mainAppNavigation)
-        }
-        composable("Screen3") {
-            Screen3(mainAppNavigation)
-        }
-        composable("Screen4") {
-            Screen4(mainAppNavigation)
-        }
+            composable("SplashScreen") {
+                SplashScreenPage(mainAppNavigation){
+                    eventDetailsState.value = it
+                }
+            }
+            composable("MainScreen") {
+                MainScreen(mainAppNavigation)
+            }
+            composable("Screen1") {
+                Screen1(mainAppNavigation)
+            }
+            composable("Screen2") {
+                Screen2(mainAppNavigation)
+            }
+            composable("Screen3") {
+                Screen3(mainAppNavigation)
+            }
+            composable("Screen4") {
+                Screen4(mainAppNavigation)
+            }
 
-        composable("InsideLockScreen") {
-            InsideLockScreenLandingPage()
+            composable("InsideLockScreen") {
+                InsideLockScreenLandingPage()
+            }
         }
     }
 }
@@ -69,21 +79,27 @@ fun Screen4(mainAppNavigation: NavHostController) {
                 Lifecycle.Event.ON_CREATE -> {
                     Log.d(tag, "Screen4: ON_CREATE")
                 }
+
                 Lifecycle.Event.ON_START -> {
                     Log.d(tag, "Screen4: ON_START")
                 }
+
                 Lifecycle.Event.ON_RESUME -> {
                     Log.d(tag, "Screen4: ON_RESUME")
                 }
+
                 Lifecycle.Event.ON_PAUSE -> {
                     Log.d(tag, "Screen4: ON_PAUSE")
                 }
+
                 Lifecycle.Event.ON_STOP -> {
                     Log.d(tag, "Screen4: ON_STOP")
                 }
+
                 Lifecycle.Event.ON_DESTROY -> {
                     Log.d(tag, "Screen4: ON_DESTROY")
                 }
+
                 else -> {}
             }
         }
@@ -121,11 +137,12 @@ fun Screen2(mainAppNavigation: NavHostController) {
 
 @Composable
 fun Screen1(mainAppNavigation: NavHostController) {
+    val eventDetail = LocalEventDetailProvider.current.value
     Box(modifier = Modifier.fillMaxSize()) {
         Button(onClick = {
             mainAppNavigation.navigate("Screen2")
         }) {
-            Text(text = "Screen1")
+            Text(text = "Screen1 ki value ${eventDetail.eventName}")
         }
     }
 }
